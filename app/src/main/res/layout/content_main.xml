@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <data>
+        <variable
+            name="secondarySpinnerAdapter"
+            type="android.widget.ArrayAdapter" />
+
+        <variable
+            name="secondaryClickHandler"
+            type="com.example.ebookshop.activity.MainActivity.MainActivityClickHandlers" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatSpinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:layout_weight="0"
+            android:onItemSelected="@{secondaryClickHandler::onSelectItem}"
+            app:adapter="@{secondarySpinnerAdapter}" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvBooks"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_weight="0" />
+    </LinearLayout>
+</layout>
